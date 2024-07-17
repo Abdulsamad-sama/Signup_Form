@@ -1,11 +1,12 @@
 import React from 'react'
 import Signupform from './Signupform'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate} from 'react-router-dom'
+
 
 const SignUp = ({ userdata, setUserdata, postData }) => {
 
-  
+const navigate = useNavigate()
 
   const inputs = [
     {
@@ -72,7 +73,8 @@ const SignUp = ({ userdata, setUserdata, postData }) => {
 
   const handleSubmit = (e) =>(
     e.preventDefault(),
-    postData
+    postData,
+    navigate("/login")
   );
 
   return (

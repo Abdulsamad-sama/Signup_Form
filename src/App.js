@@ -1,5 +1,6 @@
 import SignUp from './components/SignUp';
 import Login from './components/Login';
+import Complete from './components/Complete';
 import './App.css';
 import { useState } from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
@@ -10,9 +11,9 @@ function App() {
   const [userdata,setUserdata] = useState({
     fullname: "",
     username: "",
-    email: "",
+    email: "has@gmail.com",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "Jok123456_"
   });
 
   const postData = localStorage.setItem('userData', JSON.stringify(userdata));  
@@ -33,6 +34,10 @@ function App() {
           path='/login'
           element={<Login
           getData={getData}/>} 
+          />
+          <Route
+          path='/complete'
+          element ={<Complete/>}
           />
 
         </Routes>

@@ -1,20 +1,23 @@
 import React from 'react';
 import Loginform from './Loginform';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const Login = ({getData}) => {
+
+const Login = ({getData }) => {
+  
+  const navigate = useNavigate()
 
   const [values, setvalues] = useState({
-    email: '',
-    password: '' 
+    email: 'has@gmail.com56678890',
+    password: 'Jok123456_' 
   });
 
   const inputs =[
   {
     id: 1,
     name: 'email',
-    type: 'text',
+    type: 'email',
     placeholder: 'Username/ Email',
     label: 'Username/ Email',
     required: true
@@ -29,17 +32,25 @@ const Login = ({getData}) => {
   }
 ];
 
+const validateEmail = values["email"] === getData["email"]?
+console.log('valid'):
+console.log('invalid');
 
-console.log(values.email)
-const validateLogin = values.email .includes(getData.email)
+
+const validatePassword = 
+values["password"] === getData["confirmPassword"]?
+console.log('valid'):
+console.log('invalid');
 
 const onChange =(e)=>{
   setvalues({...values, [e.target.name]: e.target.value})
-}
+};
 
 const handleSubmit =(e) =>(
-  e.preventdefault(),
-  validateLogin
+  e.preventDefault(),
+  ?validateEmail,
+  validatePassword,
+  navigate("/complete")
 );
 
   return (
@@ -55,7 +66,7 @@ const handleSubmit =(e) =>(
             value={values[input.name]}
             onChange ={onChange} />
           ))}
-          <button type="submit" onClick={handleSubmit}></button>
+          <button type="submit" onClick={handleSubmit}>Login</button>
           <p>Don't have an account yet? <Link to ="/" 
             style={{
               color: 'red',
