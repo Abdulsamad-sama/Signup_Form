@@ -3,7 +3,7 @@ import Loginform from './Loginform';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({getData}) => {
 
   const [values, setvalues] = useState({
     email: '',
@@ -29,12 +29,17 @@ const Login = () => {
   }
 ];
 
+
+console.log(values.email)
+const validateLogin = values.email .includes(getData.email)
+
 const onChange =(e)=>{
   setvalues({...values, [e.target.name]: e.target.value})
 }
 
 const handleSubmit =(e) =>(
-  e.preventdefault()
+  e.preventdefault(),
+  validateLogin
 );
 
   return (
